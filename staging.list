@@ -1,0 +1,3 @@
+# Repository for wine-staging.
+deb https://repos.wine-staging.com/debian/ jessie main
+
