@@ -9,8 +9,7 @@ RUN dpkg --add-architecture i386 && \
 		apt-transport-https \
 		ca-certificates \
 		xauth \
-		xvfb \
-	&& apt-get clean
+		xvfb
 
 COPY staging.list /etc/apt/sources.list.d/
 COPY staging.gpg /etc/apt/trusted.gpg.d/
@@ -18,8 +17,7 @@ COPY staging.gpg /etc/apt/trusted.gpg.d/
 RUN apt-get update -y && \
 	apt-get install -y --no-install-recommends \
 		wine-staging:i386 \
-		winehq-staging \
-	&& apt-get clean
+		winehq-staging
 
 RUN useradd -m user
 USER user
