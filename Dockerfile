@@ -24,6 +24,7 @@ RUN dpkg --add-architecture i386 && \
 	apt-get install -y --no-install-recommends \
 		apt-transport-https \
 		ca-certificates \
+		curl \
 		xauth \
 		xvfb
 
