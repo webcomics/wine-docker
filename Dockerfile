@@ -3,6 +3,10 @@ MAINTAINER Tobias Gruetzmacher "tobias-docker@23.gs"
 
 ENV DEBIAN_FRONTEND noninteractive
 
+ENV TINI_VERSION v0.10.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+
 RUN dpkg --add-architecture i386 && \
 	apt-get update -y && \
 	apt-get install -y --no-install-recommends \
@@ -22,5 +26,5 @@ RUN apt-get update -y && \
 RUN useradd -m user
 USER user
 
-ENTRYPOINT ["xvfb-run"]
+ENTRYPOINT ["/tini", "--", "xvfb-run"]
 CMD ["/bin/bash"]
