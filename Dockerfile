@@ -37,5 +37,5 @@ RUN apt-get update -y && \
 RUN useradd -m user
 USER user
 
-ENTRYPOINT ["/tini", "--", "xvfb-run"]
+ENTRYPOINT ["/tini", "--"]
 CMD ["/bin/bash"]
