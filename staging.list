@@ -1,3 +1,3 @@
 # Repository for wine-staging.
-deb https://dl.winehq.org/wine-builds/debian/ jessie main
+deb https://dl.winehq.org/wine-builds/debian/ stretch main
 

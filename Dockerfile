@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER Tobias Gruetzmacher "tobias-docker@23.gs"
 
 ARG BUILD_DATE
