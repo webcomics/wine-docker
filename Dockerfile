@@ -23,6 +23,7 @@ RUN dpkg --add-architecture i386 && \
 		apt-transport-https \
 		ca-certificates \
 		curl \
+		unzip \
 		xauth \
 		xvfb
 
