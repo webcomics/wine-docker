@@ -1,0 +1,6 @@
+# Repository for wine-staging.
+Types: deb
+URIs: https://dl.winehq.org/wine-builds/debian/
+Suites: stretch
+Components: main
+Signed-By: 4A9E0F4360DC0D17956D904E818A435C5FCBF54A

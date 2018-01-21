@@ -27,7 +27,7 @@ RUN dpkg --add-architecture i386 && \
 		xauth \
 		xvfb
 
-COPY staging.list /etc/apt/sources.list.d/
+COPY staging.sources /etc/apt/sources.list.d/
 COPY staging.gpg /etc/apt/trusted.gpg.d/
 
 RUN apt-get update -y && \
