@@ -1,5 +1,4 @@
-Docker wine-staging
-===================
+# Docker wine-staging
 
 ![license](https://img.shields.io/github/license/tobix/wine-staging.svg)
 ![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)
@@ -9,9 +8,6 @@ Docker wine-staging
 
 This is docker container with wine-staging installed. See
 http://wine-staging.com/ for details.
-
-Since we assume people want to actually run stuff with wine, a user is created
-and set as the default.
 
 Xvfb is installed if you need to run something with GUI. Prepend your commands
 with xvfb-run to use it. Since xvfb-run forks the real Xvfb binary, [tini] is
