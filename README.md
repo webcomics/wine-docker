@@ -1,7 +1,7 @@
 # Docker wine-staging
 
 ![license](https://img.shields.io/github/license/tobix/wine-staging.svg)
-![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)
+![Maintenance](https://img.shields.io/maintenance/yes/2019.svg)
 ![Docker Automated build](https://img.shields.io/docker/automated/tobix/wine-staging.svg)
 [![](https://images.microbadger.com/badges/image/tobix/wine-staging.svg)](https://microbadger.com/images/tobix/wine-staging "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/commit/tobix/wine-staging.svg)](https://microbadger.com/images/tobix/wine-staging "Get your own commit badge on microbadger.com")
