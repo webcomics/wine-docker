@@ -28,8 +28,11 @@ RUN dpkg --add-architecture i386 && \
 
 COPY staging.sources /etc/apt/sources.list.d/
 COPY staging.gpg /etc/apt/trusted.gpg.d/
+COPY fix-xvfb.sh /tmp/
 
-RUN apt-get update -y && \
+RUN \
+	/tmp/fix-xvfb.sh && \
+	apt-get update -y && \
 	apt-get install -y --no-install-recommends \
 		wine-staging:i386 \
 		winehq-staging
