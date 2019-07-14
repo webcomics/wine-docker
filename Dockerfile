@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 MAINTAINER Tobias Gruetzmacher "tobias-docker@23.gs"
 
 ARG BUILD_DATE
@@ -20,7 +20,6 @@ RUN chmod +x /tini
 RUN dpkg --add-architecture i386 && \
 	apt-get update -y && \
 	apt-get install -y --no-install-recommends \
-		apt-transport-https \
 		ca-certificates \
 		curl \
 		unzip \
