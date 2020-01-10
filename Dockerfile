@@ -17,7 +17,10 @@ ENV TINI_VERSION v0.18.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 
-RUN dpkg --add-architecture i386 && \
+COPY apt /etc/apt
+
+RUN \
+	dpkg --add-architecture i386 && \
 	apt-get update -y && \
 	apt-get install -y --no-install-recommends \
 		ca-certificates \
@@ -26,12 +29,11 @@ RUN dpkg --add-architecture i386 && \
 		xauth \
 		xvfb
 
-COPY staging.sources /etc/apt/sources.list.d/
-COPY staging.gpg /etc/apt/trusted.gpg.d/
 COPY fix-xvfb.sh /tmp/
 
 RUN \
 	/tmp/fix-xvfb.sh && \
+	sed -i '/^Enabled:/ s/no/yes/' /etc/apt/sources.list.d/* && \
 	apt-get update -y && \
 	apt-get install -y --no-install-recommends \
 		wine-staging:i386 \
