@@ -7,7 +7,7 @@
 [![](https://images.microbadger.com/badges/commit/tobix/wine-staging.svg)](https://microbadger.com/images/tobix/wine-staging "Get your own commit badge on microbadger.com")
 
 This is docker container with wine-staging installed. See
-http://wine-staging.com/ for details.
+https://wine-staging.com/ for details.
 
 Xvfb is installed if you need to run something with GUI. Prepend your commands
 with xvfb-run to use it. Since xvfb-run forks the real Xvfb binary, [tini] is
