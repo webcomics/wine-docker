@@ -13,8 +13,7 @@ LABEL \
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV TINI_VERSION v0.18.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini /tini
 RUN chmod +x /tini
 
 COPY apt /etc/apt
