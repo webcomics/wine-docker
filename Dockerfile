@@ -35,7 +35,6 @@ RUN \
 	sed -i '/^Enabled:/ s/no/yes/' /etc/apt/sources.list.d/* && \
 	apt-get update -y && \
 	apt-get install -y --no-install-recommends \
-		wine-staging:i386 \
 		winehq-staging
 
 ENTRYPOINT ["/tini", "--"]
