@@ -1,5 +1,0 @@
-Types: deb
-URIs: https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10
-Suites: ./
-Signed-By: 31CFB0B65659B5D40DEEC98DDFA175A75104960E
-Enabled: no
