@@ -1,0 +1,3 @@
+Package: wine*:any
+Pin: version 5.21~buster
+Pin-Priority: 600
