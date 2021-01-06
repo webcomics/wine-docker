@@ -1,7 +1,7 @@
 # Docker wine-staging
 
 ![License](https://img.shields.io/github/license/webcomics/wine-staging)
-![Maintenance](https://img.shields.io/maintenance/yes/2020)
+![Maintenance](https://img.shields.io/maintenance/yes/2021)
 ![Docker Automated build](https://img.shields.io/docker/automated/tobix/wine-staging)
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/tobix/wine-staging/latest)
 
