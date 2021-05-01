@@ -1,15 +1,14 @@
 FROM debian:buster
 MAINTAINER Tobias Gruetzmacher "tobias-docker@23.gs"
 
+ARG WINEPKG=winehq-stable
 ARG BUILD_DATE
 ARG VCS_REF
 LABEL \
   org.label-schema.build-date=$BUILD_DATE \
   org.label-schema.license="MIT" \
-  org.label-schema.name="Docker wine-staging" \
-  org.label-schema.url="https://wine-staging.com/" \
   org.label-schema.vcs-ref=$VCS_REF \
-  org.label-schema.vcs-url="https://github.com/TobiX/wine-staging"
+  org.label-schema.vcs-url="https://github.com/TobiX/wine-docker"
 
 ENV DEBIAN_FRONTEND noninteractive
 
