@@ -34,7 +34,7 @@ RUN \
 	sed -i '/^Enabled:/ s/no/yes/' /etc/apt/sources.list.d/* && \
 	apt-get update -y && \
 	apt-get install -y --no-install-recommends \
-		winehq-staging
+		$WINEPKG
 
 ENTRYPOINT ["/tini", "--"]
 CMD ["/bin/bash"]
