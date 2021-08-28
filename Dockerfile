@@ -1,14 +1,7 @@
 FROM debian:buster
 MAINTAINER Tobias Gruetzmacher "tobias-docker@23.gs"
 
-ARG WINEPKG=winehq-stable
-ARG BUILD_DATE
-ARG VCS_REF
-LABEL \
-  org.label-schema.build-date=$BUILD_DATE \
-  org.label-schema.license="MIT" \
-  org.label-schema.vcs-ref=$VCS_REF \
-  org.label-schema.vcs-url="https://github.com/TobiX/wine-docker"
+ARG GITHUB_REF=refs/heads/stable
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -34,7 +27,7 @@ RUN \
 	sed -i '/^Enabled:/ s/no/yes/' /etc/apt/sources.list.d/* && \
 	apt-get update -y && \
 	apt-get install -y --no-install-recommends \
-		$WINEPKG
+		winehq-${GITHUB_REF#refs/heads/}
 
 ENTRYPOINT ["/tini", "--"]
 CMD ["/bin/bash"]
