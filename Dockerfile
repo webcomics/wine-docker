@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bullseye
 MAINTAINER Tobias Gruetzmacher "tobias-docker@23.gs"
 
 ARG GITHUB_REF=refs/heads/stable
