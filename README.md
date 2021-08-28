@@ -3,9 +3,9 @@
 ![License](https://img.shields.io/github/license/webcomics/wine-docker)
 ![Maintenance](https://img.shields.io/maintenance/yes/2021)
 [![Docker image](https://github.com/webcomics/wine-docker/actions/workflows/deploy.yaml/badge.svg)](https://github.com/webcomics/wine-docker/actions/workflows/deploy.yaml)
-![Docker Image Size (stable)](https://img.shields.io/docker/image-size/tobix/wine/stable)
-![Docker Image Size (devel)](https://img.shields.io/docker/image-size/tobix/wine/devel)
-![Docker Image Size (staging)](https://img.shields.io/docker/image-size/tobix/wine/staging)
+![Docker Image Size (stable)](https://img.shields.io/docker/image-size/tobix/wine/stable?label=size%20%28stable%29)
+![Docker Image Size (devel)](https://img.shields.io/docker/image-size/tobix/wine/devel?label=size%20%28devel%29)
+![Docker Image Size (staging)](https://img.shields.io/docker/image-size/tobix/wine/staging?label=size%20%28staging%29)
 
 This is docker container with wine or wine-staging installed. See
 https://www.winehq.org/ https://wine-staging.com/ for details.
