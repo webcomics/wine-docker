@@ -7,7 +7,7 @@
 ![Docker Image Size (devel)](https://img.shields.io/docker/image-size/tobix/wine/devel?label=size%20%28devel%29)
 ![Docker Image Size (staging)](https://img.shields.io/docker/image-size/tobix/wine/staging?label=size%20%28staging%29)
 
-This is docker container with wine or wine-staging installed. See
+This is a docker container with wine or wine-staging installed. See
 https://www.winehq.org/ https://wine-staging.com/ for details.
 
 ## Tags
