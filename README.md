@@ -16,7 +16,7 @@ This repository provides different tags for different versions of Wine:
 
 | Tag | Version |
 | --- | --- |
-| stable | The latest stable version of wine (at the time of writing, 6.0) |
+| stable | The latest stable version of wine (at the time of writing, 7.0) |
 | devel | The latest development version of wine |
 | staging | The latest staging version of wine |
 
