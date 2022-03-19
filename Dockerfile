@@ -5,7 +5,10 @@ ARG GITHUB_REF=refs/heads/stable
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini /tini
+# renovate: datasource=github-releases depName=krallin/tini
+ARG TINI_VERSION=0.19.0
+
+ADD https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 
 COPY apt /etc/apt
