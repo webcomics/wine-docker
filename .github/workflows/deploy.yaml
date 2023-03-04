@@ -32,7 +32,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: stable
+          tags: tobix/wine:stable
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             WINE_FLAVOUR=stable
@@ -41,7 +41,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: devel
+          tags: tobix/wine:devel
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             WINE_FLAVOUR=devel
@@ -50,7 +50,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: staging
+          tags: tobix/wine:staging
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             WINE_FLAVOUR=staging
