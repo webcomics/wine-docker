@@ -29,7 +29,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Build stable
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           push: true
           tags: stable
@@ -38,7 +38,7 @@ jobs:
             WINE_FLAVOUR=stable
 
       - name: Build devel
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           push: true
           tags: devel
@@ -47,7 +47,7 @@ jobs:
             WINE_FLAVOUR=devel
 
       - name: Build staging
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           push: true
           tags: staging
