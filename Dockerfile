@@ -1,7 +1,7 @@
 FROM debian:bullseye
 MAINTAINER Tobias Gruetzmacher "tobias-docker@23.gs"
 
-ARG GITHUB_REF=refs/heads/stable
+ARG WINE_FLAVOUR=stable
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -30,7 +30,7 @@ RUN \
 	sed -i '/^Enabled:/ s/no/yes/' /etc/apt/sources.list.d/* && \
 	apt-get update -y && \
 	apt-get install -y --no-install-recommends \
-		winehq-${GITHUB_REF#refs/heads/}
+		winehq-${WINE_FLAVOUR}
 
 ENTRYPOINT ["/tini", "--"]
 CMD ["/bin/bash"]

@@ -1,10 +1,12 @@
+---
 name: Docker image
 on:
   push:
     branches:
-      - stable
-      - staging
-      - devel
+      - main
+  schedule:
+    - cron: '11 1 18 * *'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,17 +24,33 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: tobix/wine
-          tags: |
-            type=ref,event=branch
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Build and push
+      - name: Build stable
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: stable
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            GITHUB_REF=${{ github.ref }}
+            WINE_FLAVOUR=stable
+
+      - name: Build devel
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: devel
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            WINE_FLAVOUR=devel
+
+      - name: Build staging
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: staging
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            WINE_FLAVOUR=staging
