@@ -12,25 +12,29 @@ RUN chmod +x /tini
 COPY apt /etc/apt
 
 RUN \
-	dpkg --add-architecture i386 && \
-	apt-get update -y && \
-	apt-get install -y --no-install-recommends \
+	dpkg --add-architecture i386 \
+	&& apt-get update -y \
+	&& apt-get install -y --no-install-recommends \
 		ca-certificates \
 		curl \
 		unzip \
 		xauth \
-		xvfb
+		xvfb \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
 
 COPY fix-xvfb.sh /tmp/
 
 ARG WINE_FLAVOUR=stable
 
 RUN \
-	/tmp/fix-xvfb.sh && \
-	sed -i '/^Enabled:/ s/no/yes/' /etc/apt/sources.list.d/* && \
-	apt-get update -y && \
-	apt-get install -y --no-install-recommends \
-		winehq-${WINE_FLAVOUR}
+	/tmp/fix-xvfb.sh \
+	&& sed -i '/^Enabled:/ s/no/yes/' /etc/apt/sources.list.d/* \
+	&& apt-get update -y \
+	&& apt-get install -y --no-install-recommends \
+		winehq-${WINE_FLAVOUR} \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT ["/tini", "--"]
 CMD ["/bin/bash"]
