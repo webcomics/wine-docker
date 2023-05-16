@@ -39,6 +39,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             WINE_FLAVOUR=stable
+          cache-to: type=local,dest=/tmp/buildx-cache,mode=max
 
       - name: Build devel
         uses: docker/build-push-action@v5
@@ -48,6 +49,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             WINE_FLAVOUR=devel
+          cache-from: type=local,src=/tmp/buildx-cache
 
       - name: Build staging
         uses: docker/build-push-action@v5
@@ -57,3 +59,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             WINE_FLAVOUR=staging
+          cache-from: type=local,src=/tmp/buildx-cache
