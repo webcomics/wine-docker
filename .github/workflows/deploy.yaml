@@ -8,6 +8,9 @@ on:
     - cron: '11 1 18 * *'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build and push Docker image
@@ -54,3 +57,11 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             WINE_FLAVOUR=staging
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: tobix
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: tobix/wine
+          short-description: ${{ github.event.repository.description }}
