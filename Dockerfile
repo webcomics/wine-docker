@@ -1,5 +1,5 @@
 FROM debian:bullseye
-MAINTAINER Tobias Gruetzmacher "tobias-docker@23.gs"
+LABEL maintainer="Tobias Gruetzmacher <tobias-docker@23.gs>"
 
 ARG WINE_FLAVOUR=stable
 
