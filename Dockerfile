@@ -1,8 +1,6 @@
 FROM debian:bullseye
 LABEL maintainer="Tobias Gruetzmacher <tobias-docker@23.gs>"
 
-ARG WINE_FLAVOUR=stable
-
 ENV DEBIAN_FRONTEND noninteractive
 
 # renovate: datasource=github-releases depName=krallin/tini
@@ -24,6 +22,8 @@ RUN \
 		xvfb
 
 COPY fix-xvfb.sh /tmp/
+
+ARG WINE_FLAVOUR=stable
 
 RUN \
 	/tmp/fix-xvfb.sh && \
