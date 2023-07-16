@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bookworm
 LABEL maintainer="Tobias Gruetzmacher <tobias-docker@23.gs>"
 
 ENV DEBIAN_FRONTEND noninteractive
