@@ -1,7 +1,7 @@
 # Dockerfied wine & wine-staging
 
 ![License](https://img.shields.io/github/license/webcomics/wine-docker)
-![Maintenance](https://img.shields.io/maintenance/yes/2023)
+![Maintenance](https://img.shields.io/maintenance/yes/2024)
 [![Docker image](https://github.com/webcomics/wine-docker/actions/workflows/deploy.yaml/badge.svg)](https://github.com/webcomics/wine-docker/actions/workflows/deploy.yaml)
 ![Docker Image Size (stable)](https://img.shields.io/docker/image-size/tobix/wine/stable?label=size%20%28stable%29)
 ![Docker Image Size (devel)](https://img.shields.io/docker/image-size/tobix/wine/devel?label=size%20%28devel%29)
@@ -16,7 +16,7 @@ This repository provides different tags for different versions of Wine:
 
 | Tag | Version |
 | --- | --- |
-| stable | The latest stable version of wine (at the time of writing, 8.0) |
+| stable | The latest stable version of wine (at the time of writing, 9.0) |
 | devel | The latest development version of wine |
 | staging | The latest staging version of wine |
 
