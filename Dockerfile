@@ -1,7 +1,7 @@
 FROM debian:bookworm
-LABEL maintainer="Tobias Gruetzmacher <tobias-docker@23.gs>"
+LABEL org.opencontainers.image.authors="Tobias Gruetzmacher <tobias-docker@23.gs>"
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 # renovate: datasource=github-releases depName=krallin/tini
 ARG TINI_VERSION=0.19.0
@@ -17,6 +17,7 @@ RUN \
 	&& apt-get install -y --no-install-recommends \
 		ca-certificates \
 		curl \
+		libvulkan1 \
 		unzip \
 		xauth \
 		xvfb \
