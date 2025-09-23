@@ -1,7 +1,7 @@
 # Repository for wine
 Types: deb
 URIs: https://dl.winehq.org/wine-builds/debian/
-Suites: bookworm
+Suites: trixie
 Components: main
 Enabled: no
 Signed-By:

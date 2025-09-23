@@ -17,7 +17,6 @@ RUN \
 	&& apt-get install -y --no-install-recommends \
 		ca-certificates \
 		curl \
-		libvulkan1 \
 		unzip \
 		xauth \
 		xvfb \
