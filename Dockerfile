@@ -10,7 +10,7 @@ ADD https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini /tin
 RUN chmod +x /tini
 
 COPY apt /etc/apt
-COPY fix-xvfb.sh /tmp/
+COPY fix-xvfb.sh wine-dependencies.txt /tmp/
 
 RUN \
 	dpkg --add-architecture i386 \
@@ -20,6 +20,9 @@ RUN \
 		unzip \
 		xauth \
 		xvfb \
+	&& apt-get install -y --no-install-recommends --mark-auto \
+		$(cat /tmp/wine-dependencies.txt) \
+	&& rm /tmp/wine-dependencies.txt \
 	&& /tmp/fix-xvfb.sh \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
