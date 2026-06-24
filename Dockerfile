@@ -1,4 +1,4 @@
-FROM debian:trixie
+FROM debian:trixie-20260623
 LABEL org.opencontainers.image.authors="Tobias Gruetzmacher <tobias-docker@23.gs>"
 
 ENV DEBIAN_FRONTEND=noninteractive
