@@ -3,12 +3,6 @@ LABEL org.opencontainers.image.authors="Tobias Gruetzmacher <tobias-docker@23.gs
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# renovate: datasource=github-releases depName=krallin/tini
-ARG TINI_VERSION=0.19.0
-
-ADD https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
-
 COPY apt /etc/apt
 COPY fix-xvfb.sh wine-dependencies.txt /tmp/
 
@@ -17,6 +11,7 @@ RUN \
 	&& apt-get install -y --update --no-install-recommends \
 		ca-certificates \
 		curl \
+		tini \
 		unzip \
 		xauth \
 		xvfb \
@@ -36,5 +31,5 @@ RUN \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["/tini", "--"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["/bin/bash"]
