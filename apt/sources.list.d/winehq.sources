@@ -1,7 +1,7 @@
 # Repository for wine
 Types: deb
-URIs: https://dl.winehq.org/wine-builds/debian/
-Suites: trixie
+URIs: https://dl.winehq.org/wine-builds/ubuntu/
+Suites: resolute
 Components: main
 Enabled: no
 Signed-By:

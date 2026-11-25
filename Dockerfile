@@ -1,4 +1,4 @@
-FROM debian:trixie
+FROM ubuntu:resolute
 LABEL org.opencontainers.image.authors="Tobias Gruetzmacher <tobias-docker@23.gs>"
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -7,8 +7,7 @@ COPY apt /etc/apt
 COPY fix-xvfb.sh wine-dependencies.txt /tmp/
 
 RUN \
-	dpkg --add-architecture i386 \
-	&& apt-get install -y --update --no-install-recommends \
+	apt-get install -y --update --no-install-recommends \
 		ca-certificates \
 		curl \
 		tini \
