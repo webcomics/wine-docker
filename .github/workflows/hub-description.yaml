@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   description:
-    runs-on: blacksmith-2vcpu-ubuntu-2404
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout
         uses: actions/checkout@v7
