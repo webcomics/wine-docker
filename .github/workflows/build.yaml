@@ -43,8 +43,13 @@ jobs:
           cache-to: type=local,dest=${{ runner.temp }}/buildx-cache,mode=max
 
       - name: Test image
+        # systeminfo is a console app but tries to create windows in the
+        # background, which makes it a good test for headless GUI stuff
         run: |
-          docker run --rm tobix/wine:localtest wine --version
+          docker run --rm \
+            -e WINEDLLOVERRIDES="winemenubuilder.exe,mscoree,mshtml=" \
+            tobix/wine:localtest \
+            wlwine-run wine systeminfo
 
       - name: Build stable
         uses: docker/build-push-action@v7

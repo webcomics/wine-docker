@@ -1,0 +1,47 @@
+#! /usr/bin/python3
+# -*- python -*-
+
+import os
+import sys
+
+from wlheadless.wlheadless_common import WlheadlessCommon
+
+
+def print_usage(argv0: str) -> None:
+    """ Shows usage """
+    print(f'usage: {argv0} client <client arguments>\n')
+    print('Run a command inside a dedicated headless Wayland compositor and cleanup wineserver afterwards.\n')
+    sys.exit(os.EX_USAGE)
+
+
+status = os.EX_DATAERR
+if len(sys.argv) < 2:
+    print_usage(sys.argv[0])
+
+wlheadless_common = WlheadlessCommon()
+
+wlheadless = wlheadless_common.load_compositor('weston')
+if not wlheadless:
+    wlheadless_common.cleanup()
+    sys.exit(status)
+
+if wlheadless.run_compositor() < 0:
+    wlheadless_common.cleanup()
+    sys.exit(status)
+
+if wlheadless.wait_compositor() != 0:
+    wlheadless_common.cleanup()
+    sys.exit(status)
+
+try:
+    status = wlheadless.spawn_client(sys.argv[1:])
+except Exception as error:
+    print(str(error))
+
+try:
+    wlheadless.spawn_client(('wineserver', '-w'))
+except Exception as error:
+    print(str(error))
+
+wlheadless_common.cleanup()
+sys.exit(status)

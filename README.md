@@ -16,22 +16,50 @@ This repository provides different tags for different versions of Wine:
 
 | Tag | Version |
 | --- | --- |
-| stable | The latest stable version of wine (at the time of writing, 10.0) |
+| stable | The latest stable version of wine (at the time of writing, 11.0) |
 | devel | The latest development version of wine |
 | staging | The latest staging version of wine |
 
-## UI via Xvfb
+## "Virtual" GUI
 
-Xvfb is installed if you need to run something with GUI. Prepend your commands
-with xvfb-run to use it. Since xvfb-run forks the real Xvfb binary, [tini] is
-used as an entrypoint, otherwise xvfb-run hangs.
+Wine can run some Windows console software without a display, but whenever a
+window needs to be opened, a display server (either X11 or Wayland) is
+required. There are some ways to start a "virtual" display server.
 
-If you want to run multiple wine processes with Xvfb, wrap then in one Xvfb
-call instead of spawning multiple Xvfb instances:
-
-    xvfb-run sh -c "\
-      wine foo.exe && \
-      wine bar.exe && \
-      wineserver -w"
+Since those wrapers fork stuff into the background, we use [tini] as the
+entrypoint, otherwise those scripts might hang.
 
 [tini]: https://github.com/krallin/tini
+
+### Headless Wayland server
+
+This is the modern and preferred way. This container ships a custom tool (based
+on the [xwayland-run] tool suite) called `wlwine-run`, which makes it simple to
+run commands under wine while making sure everything terminates correctly. You
+can use it like this:
+
+```sh
+wlwine-run wine foo.exe
+```
+
+or, for multiple commands:
+
+```sh
+wlwine-run sh -c "\
+    wine foo.exe && \
+    wine bar.exe"
+```
+
+[xwayland-run]: https://gitlab.freedesktop.org/ofourdan/xwayland-run
+
+### Headless X11 via Xvfb
+
+This way is deprecated and the tool might be removed in the future. If you use
+this way, you have to cleanup wineserver yourself:
+
+```sh
+xvfb-run sh -c "\
+  wine foo.exe && \
+  wine bar.exe && \
+  wineserver -w"
+```
