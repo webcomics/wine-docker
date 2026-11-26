@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 COPY apt /etc/apt
 COPY fix-xvfb.sh wine-dependencies.txt /tmp/
+COPY wlwine-run /usr/local/bin/
 
 RUN \
 	dpkg --add-architecture i386 \
@@ -13,8 +14,10 @@ RUN \
 		curl \
 		tini \
 		unzip \
+		weston \
 		xauth \
 		xvfb \
+		xwayland-run \
 	&& apt-get install -y --no-install-recommends --mark-auto \
 		$(cat /tmp/wine-dependencies.txt) \
 	&& rm /tmp/wine-dependencies.txt \
