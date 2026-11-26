@@ -22,7 +22,7 @@ RUN \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-ARG WINE_FLAVOUR=stable
+ARG WINE_FLAVOUR=devel
 
 RUN \
 	sed -i '/^Enabled:/ s/no/yes/' /etc/apt/sources.list.d/* \

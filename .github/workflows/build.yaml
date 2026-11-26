@@ -34,6 +34,18 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
+      - name: Local build
+        uses: docker/build-push-action@v7
+        with:
+          load: true
+          tags: tobix/wine:localtest
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-to: type=local,dest=${{ runner.temp }}/buildx-cache,mode=max
+
+      - name: Test image
+        run: |
+          docker run --rm tobix/wine:localtest wine --version
+
       - name: Build stable
         uses: docker/build-push-action@v7
         with:
@@ -42,7 +54,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             WINE_FLAVOUR=stable
-          cache-to: type=local,dest=/tmp/buildx-cache,mode=max
+          cache-from: type=local,src=${{ runner.temp }}/buildx-cache
 
       - name: Build devel
         uses: docker/build-push-action@v7
@@ -52,7 +64,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             WINE_FLAVOUR=devel
-          cache-from: type=local,src=/tmp/buildx-cache
+          cache-from: type=local,src=${{ runner.temp }}/buildx-cache
 
       - name: Build staging
         uses: docker/build-push-action@v7
@@ -62,4 +74,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             WINE_FLAVOUR=staging
-          cache-from: type=local,src=/tmp/buildx-cache
+          cache-from: type=local,src=${{ runner.temp }}/buildx-cache
